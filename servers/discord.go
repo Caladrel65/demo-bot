@@ -17,10 +17,10 @@ func main() {
 
 	// Create Discord session
 	session, err := discordgo.New("Bot " + discordToken)
-	defer session.Close()
 	if err != nil {
 		log.WithError(err).Fatal("failed to create Discord session")
 	}
+	defer session.Close()
 
 	// Actually open connection to Discord
 	err = session.Open()
