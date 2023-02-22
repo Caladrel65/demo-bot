@@ -1,2 +1,4 @@
 # demo-bot
-Demo bot that uses containers, gRPC, and special handlers to perform similar actions across several services.
+This is a demo bot that uses microservice architecture to separately handle the API, storage, and business logic. The goal is to have one set of commands that can be handled by several platforms such as Discord and Slack using the same code. Each API/platform will have its own handler that is designed to wrap commands into a standard format, pass the information back to the main container, be worked on, and then have a generic response sent back. The handler will then convert that into a platform-specific response to send to the API.
+
+This is currently a work in progress, and I'll work on it when I get inspiration to. Once I'm done with it I will likely not maintain it too strictly.

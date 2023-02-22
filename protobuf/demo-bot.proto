@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package protobuf;
+
+option go_package = "google.golang.org/grpc/examples/helloworld/helloworld";
+option go_package = "demo-bot/protobuf/demo-bot"; // ???
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.helloworld";
+option java_outer_classname = "HelloWorldProto";
+
+// The greeting service definition.
+service DemoBot {
+  rpc HandleMessage(HandleMessageRequest) returns(HandleMessageResponse) {}
+}
+
+// Message recieved from platform
+message HandleMessageRequest {
+    string user = 1;
+    string body = 2;
+}
+
+// Platform-agnostic response
+message HandleMessageResponse {
+  string body = 1;
+  optional string actions = 2; // this should be an enum maybe?
+  optional string extras = 3; // idk // this might be a boolean for each platform that then has the handler wait for a request from the backend with a follow-up action to perform
+}
